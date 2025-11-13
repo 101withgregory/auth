@@ -10,6 +10,8 @@ import { useEffect } from "react"
 import HomePage from "./pages/HomePage"
 import LoadingSpinner from "./components/LoadingSpinner"
 import ForgotPasswordPage from "./pages/ForgotPasswordPage"
+import ResetPasswordPage from "./pages/ResetPasswordPage"
+import { Toaster } from "react-hot-toast"
 
 // Redirect authenticated users to home page
 
@@ -70,8 +72,17 @@ function App() {
         <Route path='/forgot-password' element={<RedirectAuthenticatedUser>
           <ForgotPasswordPage/>
         </RedirectAuthenticatedUser>}/>
-
+<Route path='/reset-password/:token' element={
+<RedirectAuthenticatedUser>
+<ResetPasswordPage/>
+</RedirectAuthenticatedUser>
+}/>
+{/* catch all routes... */}
+<Route path='*' element={
+<Navigate to='/' replace/>
+}/>
       </Routes>
+      <Toaster/>
     </div> 
   )
 }
