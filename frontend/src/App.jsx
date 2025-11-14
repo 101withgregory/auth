@@ -32,7 +32,7 @@ const ProtectedRoute = ({ children }) => {
     return <Navigate to='/login' replace/>;
 
   }
-  if(!user.isVerified){
+  if(user && !user.isVerified){
     return <Navigate to='/verify-email' replace/>;
   }
   return children;
